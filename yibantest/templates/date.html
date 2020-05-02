@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html >
+<head >
+<meta charset="utf-8">
+<title>查询时间</title>
+<link type="text/css" rel="stylesheet" href={{ url_for('static', filename='css/zkx.css') }}> </link>
+</head>
+<body>
+{% if  message %}
+    <p style="color:red">{{ message }} </p>
+{% endif %}
+{{ moban }}
+<form action="/date" method="post" >
+            <!--<p><input name="username" value="{{ username }}">账号</p>
+            <p><input name="password" type="password">密码</p>-->
+    <p style="color:red">时间格式为xxxx-xx-xx，如2019-12-02</p>
+    <p><input name="start_date" type="text">开始时间</p>
+    <p><input name="end_date" type="text">结束时间</p>
+    <p><button type="subbmit"> 查询</button></p>
+</form>
+</body>
+</html>

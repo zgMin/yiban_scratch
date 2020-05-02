@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html >
+<head >
+<meta charset="utf-8">
+<title>验证登录</title>
+<link type="text/css" rel="stylesheet" href={{ url_for('static', filename='css/zkx.css') }}> </link>
+</head>
+<body>
+{% if  yz_error %}
+    <p style="color:red">验证码错误，请重新输入</p>
+{% endif %}
+{% if  invalid %}
+    <p style="color:red">登录失效，重新登录</p>
+{% endif %}
+<form action="/login" method="post" >
+    <!--<p><input name="username" value="{{ username }}">账号</p>
+    <p><input name="password" type="password">密码</p>-->
+    <p><input name="inputyzm" type="text">验证码</p>
+    <img src={{imgdata}}></img>
+    <p><button type="subbmit"> 提交</button></p>
+</form>
+</body>
+</html>

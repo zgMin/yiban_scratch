@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>统计结果</title>
+</head>
+<body>
+<form action="/result" method="post" >
+    <button type="subbmit"> 下载数据</button>
+</form>
+<table border="1">
+    <tr>
+        <th>姓名</th>
+        <th>签到次数</th>
+    </tr>
+    {% for i in result_list %}
+    <tr>
+        <td>{{ i }}</td>
+        <td>{{result_list[i]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

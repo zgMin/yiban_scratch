@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>未签到名单</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>姓名</th>
+        <th>签到状态</th>
+    </tr>
+    {% for i in result_list %}
+    <tr>
+        <td>{{ i }}</td>
+        <td>未签到</td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td>total</td>
+        <td>{{total}}</td>
+    </tr>
+</table>
+</body>
+</html>

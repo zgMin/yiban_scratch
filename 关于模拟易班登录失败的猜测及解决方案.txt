@@ -1,0 +1,29 @@
+猜测：
+	反复多次抓包发现，data中的password的值一直在变化，猜测其可能是由变化的密钥加密形成，这可能是导致模拟登录失败的原因
+
+解决方案1（优）：（失败）
+	抓取变化的密钥，对密码进行加密后再模拟登录
+	# 获取公钥并加密
+	public_key = re.findall(r"BEGIN PUBLIC KEY-----\sM(.*)-----END PUBLIC KEY", 	login_page_res.text, re.S)[0]
+	public_key = '-----BEGIN PUBLIC KEY-----\nM' + public_key + '-----END PUBLIC KEY-----'
+	rsa_key = RSA.importKey(public_key)
+	x = rsa.encrypt(password.encode(), rsa_key)
+	rsa_pass = base64.b64encode(x).decode()
+解决方案2：（失败）
+	使用selenium模块进行模拟登录并获取cookies
+
+ps：主要在于自动获取的cookies与实际不符
+
+解决方案3：
+	selenium模拟登录并抓取，不需要selenium，在不重启情况下，会维持一段时间的登录状态，可以进一步优化自动输入验证码
+	当前实现程度	90%
+	待实现：
+		获取验证码代码		已实现
+		与页面的交互，获取三个信息，验证码（如果需要，弹出该页面），开始时间，结束时间					已实现
+		上传与下载表格，页面形式展示表格内容		已实现
+		重复查询			已实现
+	待优化：
+		验证码的自动化操作
+		scrapy优化，并发式爬取，提高爬取速度
+
+总结：selenium真是好用
